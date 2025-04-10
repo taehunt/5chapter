@@ -1,0 +1,80 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>실전 프로젝트</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- 네비게이션 -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">MySite</div>
+      <ul class="nav-links">
+        <li><a href="#">홈</a></li>
+        <li><a href="#">소개</a></li>
+        <li><a href="#">기능</a></li>
+      </ul>
+      <div class="menu-toggle">☰</div>
+    </nav>
+  </header>
+
+  <!-- 히어로 섹션 -->
+  <main class="hero">
+    <h1>나만의 웹사이트를 시작해보세요</h1>
+    <p>기초부터 실습까지, 하나하나 따라 하면서 완성해봅니다.</p>
+    <img src="assets/images/slide1.jpg" alt="웹사이트 이미지 예시" />
+  </main>
+
+  <!-- 슬라이드 섹션 -->
+  <section class="slider">
+    <div class="slides">
+      <img src="assets/images/slide1.jpg" alt="슬라이드 1" class="slide active" />
+      <img src="assets/images/slide2.jpg" alt="슬라이드 2" class="slide" />
+      <img src="assets/images/slide3.jpg" alt="슬라이드 3" class="slide" />
+    </div>
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+  </section>
+
+  <!-- 로그인 섹션 -->
+  <section class="login-section">
+    <h2>로그인</h2>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="사용자명" required />
+      <button type="submit">로그인</button>
+    </form>
+    <div id="welcomeMessage" style="display: none;">
+      <p><span id="userDisplay"></span>님, 환영합니다!</p>
+      <button id="logoutBtn">로그아웃</button>
+    </div>
+  </section>
+
+  <!-- 회원가입 섹션 -->
+  <section class="signup-section">
+    <h2>회원가입</h2>
+    <form id="signupForm">
+      <input type="text" id="name" placeholder="이름" required />
+      <input type="email" id="email" placeholder="이메일 주소" required />
+      <input type="password" id="password" placeholder="비밀번호" required />
+      <div class="hint">※ 비밀번호는 8자 이상, 숫자 포함 필수</div>
+      <button type="submit">가입하기</button>
+    </form>
+    <div id="signupMessage"></div>
+  </section>
+
+  <!-- 댓글 섹션 -->
+  <section class="comment-section">
+    <h2>댓글 남기기</h2>
+    <form id="commentForm">
+      <input type="text" id="commentInput" placeholder="댓글을 입력하세요" required />
+      <button type="submit">등록</button>
+    </form>
+    <ul id="commentList"></ul>
+  </section>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

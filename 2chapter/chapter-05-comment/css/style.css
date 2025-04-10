@@ -1,0 +1,207 @@
+/* style.css */
+body {
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e1e1e;
+    padding: 15px 20px;
+    color: white;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .hero {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f5f5f5;
+  }
+  
+  .hero img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin-top: 20px;
+  }
+  
+  /* 반응형 처리 */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background-color: #1e1e1e;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+    }
+  
+    .menu-toggle {
+      display: block;
+    }
+  
+    .nav-links.active {
+      display: flex;
+    }
+  }
+  
+/* 슬라이드 전체 박스 */
+.slider {
+  position: relative;
+  max-width: 100%;
+  margin: 50px auto;
+  overflow: hidden;
+}
+
+/* 슬라이드 이미지 */
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  width: 100%;
+  flex-shrink: 0;
+  display: none;
+}
+
+.slide.active {
+  display: block;
+}
+
+/* 좌우 버튼 */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 12px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* 로그인 섹션 */
+.login-section {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-section h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+#loginForm {
+  display: flex;
+  gap: 10px;
+}
+
+#loginForm input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#loginForm button,
+#logoutBtn {
+  padding: 10px 15px;
+  border: none;
+  background-color: #1e1e1e;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#logoutBtn {
+  margin-top: 10px;
+}
+
+.comment-section {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.comment-section h2 {
+  margin-bottom: 10px;
+}
+
+#commentForm {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+#commentForm input {
+  flex: 1;
+  padding: 10px;
+}
+
+#commentForm button {
+  padding: 10px 15px;
+  background: #1e1e1e;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#commentList {
+  list-style: none;
+  padding: 0;
+}
+
+.comment-item {
+  background: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.comment-item button {
+  background: none;
+  border: none;
+  color: #1e1e1e;
+  cursor: pointer;
+  font-size: 12px;
+  margin-left: 10px;
+}

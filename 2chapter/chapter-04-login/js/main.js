@@ -1,0 +1,71 @@
+// main.js
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".slide");
+  const prevBtn = document.querySelector(".prev");
+  const nextBtn = document.querySelector(".next");
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove("active");
+      if (i === index) {
+        slide.classList.add("active");
+      }
+    });
+  }
+
+  function nextSlide() {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }
+
+  function prevSlide() {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+  }
+
+  nextBtn.addEventListener("click", nextSlide);
+  prevBtn.addEventListener("click", prevSlide);
+
+  // 자동 슬라이드
+  setInterval(nextSlide, 4000); // 4초마다 자동 전환
+
+  showSlide(current);
+});
+
+// 로그인/로그아웃 기능
+document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = document.getElementById("loginForm");
+  const usernameInput = document.getElementById("username");
+  const welcomeBox = document.getElementById("welcomeMessage");
+  const userDisplay = document.getElementById("userDisplay");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  function checkLoginStatus() {
+    const savedUser = localStorage.getItem("username");
+    if (savedUser) {
+      loginForm.style.display = "none";
+      welcomeBox.style.display = "block";
+      userDisplay.textContent = savedUser;
+    } else {
+      loginForm.style.display = "flex";
+      welcomeBox.style.display = "none";
+    }
+  }
+
+  loginForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const username = usernameInput.value.trim();
+    if (username) {
+      localStorage.setItem("username", username);
+      checkLoginStatus();
+    }
+  });
+
+  logoutBtn.addEventListener("click", function () {
+    localStorage.removeItem("username");
+    checkLoginStatus();
+  });
+
+  checkLoginStatus();
+});

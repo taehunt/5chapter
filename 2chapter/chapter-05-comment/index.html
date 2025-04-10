@@ -1,0 +1,34 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>실전 프로젝트</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">MySite</div>
+      <ul class="nav-links">
+        <li><a href="#">홈</a></li>
+        <li><a href="#">소개</a></li>
+        <li><a href="#">기능</a></li>
+      </ul>
+      <div class="menu-toggle">☰</div>
+    </nav>
+  </header>
+
+  <section class="comment-section">
+    <h2>댓글 남기기</h2>
+    <form id="commentForm">
+      <input type="text" id="commentInput" placeholder="댓글을 입력하세요" required />
+      <button type="submit">등록</button>
+    </form>
+    <ul id="commentList"></ul>
+  </section>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
