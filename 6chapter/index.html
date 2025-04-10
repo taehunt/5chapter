@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실무 레이아웃 클론</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="container">
+        <h1 class="logo">MyBrand</h1>
+        <nav class="tab-menu">
+          <button class="tab" data-target="home">홈</button>
+          <button class="tab" data-target="about">소개</button>
+          <button class="tab" data-target="contact">문의</button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="banner">
+        <div class="banner-content">
+          <h2>당신의 비즈니스를 위한 완벽한 시작</h2>
+          <p>지금 바로 무료로 시작해보세요.</p>
+          <a href="#" class="btn btn-primary">무료 시작하기</a>
+        </div>
+      </section>
+
+      <div class="tab-content" id="home">홈 콘텐츠입니다</div>
+      <div class="tab-content" id="about" style="display: none">
+        소개 콘텐츠입니다
+      </div>
+      <div class="tab-content" id="contact" style="display: none">
+        문의 콘텐츠입니다
+      </div>
+    </main>
+
+    <section class="card-list">
+      <h3>추천 서비스</h3>
+      <div class="cards">
+        <div class="card">
+          <img src="images/design.jpg" alt="디자인" />
+          <h4>웹디자인</h4>
+          <p>전문 디자이너와 함께하는 브랜드 웹사이트 제작</p>
+          <a href="#" class="btn btn-outline">자세히 보기</a>
+        </div>
+        <div class="card">
+          <img src="images/code.jpg" alt="개발" />
+          <h4>프론트엔드 개발</h4>
+          <p>React, Vue 등으로 완성하는 현대적인 UI</p>
+          <a href="#" class="btn btn-outline">자세히 보기</a>
+        </div>
+        <div class="card">
+          <img src="images/marketing.jpg" alt="마케팅" />
+          <h4>마케팅 컨설팅</h4>
+          <p>검색 최적화와 퍼포먼스 마케팅으로 매출 향상</p>
+          <a href="#" class="btn btn-outline">자세히 보기</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="main-footer">
+      <div class="footer-inner">
+        <div class="footer-links">
+          <a href="#">회사소개</a>
+          <a href="#">이용약관</a>
+          <a href="#">개인정보처리방침</a>
+          <a href="#">고객센터</a>
+        </div>
+        <p class="copyright">© 2025 MyBrand. All rights reserved.</p>
+      </div>
+    </footer>
+    <script src="main.js"></script>
+  </body>
+</html>
