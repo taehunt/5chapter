@@ -8,8 +8,11 @@ const path = require("path");
 
 const app = express();
 
+// ✅ 환경변수 이름 수정
+const MONGO_URI = process.env.MONGODB_URI;
+
 // MongoDB 연결
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(MONGO_URI)
   .then(() => console.log("✅ MongoDB 연결 완료"))
   .catch((err) => console.error("❌ MongoDB 연결 실패:", err));
 
@@ -17,7 +20,7 @@ mongoose.connect(process.env.MONGO_URI)
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(expressLayouts);
-app.set("layout", "layout"); // 기본 레이아웃 지정
+app.set("layout", "layout");
 
 // 미들웨어
 app.use(express.static(path.join(__dirname, "public")));
@@ -28,7 +31,9 @@ app.use(session({
   secret: "secret-key",
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+  store: MongoStore.create({
+    mongoUrl: MONGO_URI, // ✅ 여기서도 변수 재사용
+  }),
 }));
 
 // 세션 유저 정보를 모든 뷰에 전달
