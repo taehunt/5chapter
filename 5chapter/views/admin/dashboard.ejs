@@ -1,0 +1,52 @@
+<% layout("layout") -%>
+
+<h2>👑 관리자 대시보드</h2>
+
+<!-- 통계 출력 -->
+<section>
+  <h3>📊 사이트 통계</h3>
+  <ul>
+    <li>총 사용자 수: <strong><%= userCount %></strong></li>
+    <li>총 게시글 수: <strong><%= postCount %></strong></li>
+    <li>총 댓글 수: <strong><%= commentCount %></strong></li>
+  </ul>
+</section>
+
+<!-- 사용자 목록 -->
+<section>
+  <h3>👤 사용자 목록</h3>
+  <ul>
+    <% users.forEach(user => { %>
+      <li>
+        <%= user.username %>
+        <% if (user.isAdmin) { %> (관리자) <% } %>
+      </li>
+    <% }) %>
+  </ul>
+</section>
+
+<!-- 게시글 목록 -->
+<section>
+  <h3>📝 게시글 목록</h3>
+  <ul>
+    <% posts.forEach(post => { %>
+      <li>
+        <strong><%= post.title %></strong> - <%= post.author.username %>
+      </li>
+    <% }) %>
+  </ul>
+</section>
+
+<!-- 댓글 목록 -->
+<section>
+  <h3>💬 댓글 목록</h3>
+  <ul>
+    <% comments.forEach(comment => { %>
+      <li>
+        <%= comment.content %> (작성자: <%= comment.author.username %>, 글: <%= comment.post.title %>)
+      </li>
+    <% }) %>
+  </ul>
+</section>
+
+<a href="/">홈으로</a>

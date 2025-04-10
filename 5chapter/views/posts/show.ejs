@@ -1,0 +1,45 @@
+<h3>댓글</h3>
+
+<form action="/comments/<%= post._id %>" method="POST">
+  <textarea name="content" placeholder="댓글을 입력하세요" required></textarea>
+  <button type="submit">댓글 작성</button>
+</form>
+
+<ul>
+  <% comments.forEach(comment => { %>
+    <li>
+      <strong><%= comment.author.username %></strong>: <%= comment.content %>
+
+      <% if (session.user && (session.user._id === comment.author._id.toString() || session.user.isAdmin)) { %>
+        <form action="/comments/<%= comment._id %>/delete" method="POST" style="display:inline;">
+          <button type="submit">삭제</button>
+        </form>
+      <% } %>
+
+      <!-- 대댓글 폼 -->
+      <% if (session.user) { %>
+        <form action="/comments/<%= post._id %>" method="POST" style="margin-top: 5px;">
+          <input type="hidden" name="parentId" value="<%= comment._id %>" />
+          <input type="text" name="content" placeholder="대댓글 입력" required />
+          <button type="submit">작성</button>
+        </form>
+      <% } %>
+
+      <!-- 대댓글 출력 -->
+      <ul style="margin-left: 20px;">
+        <% replies
+          .filter(reply => reply.parentComment && reply.parentComment.toString() === comment._id.toString())
+          .forEach(reply => { %>
+          <li>
+            <strong><%= reply.author.username %></strong>: <%= reply.content %>
+            <% if (session.user && (session.user._id === reply.author._id.toString() || session.user.isAdmin)) { %>
+              <form action="/comments/<%= reply._id %>/delete" method="POST" style="display:inline;">
+                <button type="submit">삭제</button>
+              </form>
+            <% } %>
+          </li>
+        <% }) %>
+      </ul>
+    </li>
+  <% }) %>
+</ul>

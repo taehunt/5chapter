@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= title || "풀스택 웹앱" %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <h1><a href="/">진짜 풀스택 웹앱</a></h1>
+    <nav>
+      <% if (session.user) { %>
+        <span><%= session.user.username %>님 환영합니다</span>
+        <a href="/posts">게시판</a>
+        <% if (session.user.isAdmin) { %>
+          <a href="/admin/dashboard">관리자</a>
+        <% } %>
+        <a href="/logout">로그아웃</a>
+      <% } else { %>
+        <a href="/login">로그인</a>
+        <a href="/register">회원가입</a>
+      <% } %>
+	  <button id="themeToggle">🌗 다크모드 토글</button>
+    </nav>
+    <hr />
+  </header>
+
+  <main>
+    <%- body %>
+  </main>
+
+  <footer>
+    <hr />
+    <p>© 2025 커리어북스</p>
+  </footer>
+  <script>
+	const toggleButton = document.getElementById("themeToggle");
+	const currentTheme = localStorage.getItem("theme");
+  
+	if (currentTheme) {
+	  document.documentElement.setAttribute("data-theme", currentTheme);
+	}
+  
+	toggleButton.addEventListener("click", () => {
+	  const current = document.documentElement.getAttribute("data-theme");
+	  const newTheme = current === "dark" ? "light" : "dark";
+	  document.documentElement.setAttribute("data-theme", newTheme);
+	  localStorage.setItem("theme", newTheme);
+	});
+  </script>  
+</body>
+</html>

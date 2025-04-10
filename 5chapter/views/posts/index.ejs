@@ -1,0 +1,46 @@
+<% layout("layout") -%>
+
+<h2>게시글 목록</h2>
+<a href="/posts/new">글 작성</a>
+<ul>
+  <% posts.forEach(post => { %>
+    <li>
+      <a href="/posts/<%= post._id %>"><%= post.title %></a>
+      - <%= post.author.username %>
+    </li>
+  <% }) %>
+</ul>
+
+views/posts/new.ejs
+<% layout("layout") -%>
+
+<h2>글 작성</h2>
+<form action="/posts" method="POST">
+  <input name="title" placeholder="제목" required />
+  <textarea name="body" placeholder="내용" required></textarea>
+  <button type="submit">작성</button>
+</form>
+
+views/posts/show.ejs
+<% layout("layout") -%>
+
+<h2><%= post.title %></h2>
+<p><%= post.body %></p>
+<p>작성자: <%= post.author.username %></p>
+
+<% if (session.user && (session.user._id === post.author._id.toString() || session.user.isAdmin)) { %>
+  <a href="/posts/<%= post._id %>/edit">수정</a>
+  <form action="/posts/<%= post._id %>/delete" method="POST" style="display:inline;">
+    <button type="submit">삭제</button>
+  </form>
+<% } %>
+
+views/posts/edit.ejs
+<% layout("layout") -%>
+
+<h2>글 수정</h2>
+<form action="/posts/<%= post._id %>/edit" method="POST">
+  <input name="title" value="<%= post.title %>" required />
+  <textarea name="body" required><%= post.body %></textarea>
+  <button type="submit">수정</button>
+</form>
