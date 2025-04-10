@@ -1,0 +1,6 @@
+<h2>글 수정</h2>
+<form action="/posts/<%= post._id %>/edit" method="POST">
+  <input name="title" value="<%= post.title %>" required />
+  <textarea name="body" required><%= post.body %></textarea>
+  <button type="submit">수정</button>
+</form>
